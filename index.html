@@ -1,23 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Node server</title>
     <style>
-        body{
+        body {
             background: skyblue;
             text-transform: uppercase;
             align-content: center;
         }
-        h1{
+
+        h1 {
             font-size: 40px;
             color: white;
         }
+        h5{
+            background-color:darkslategrey;
+            padding: 30px;
+        }
+        h6 {
+            font-size: 20px;
+            color: darkred;
+            cursor: pointer;
+        }
     </style>
 </head>
+
 <body>
     <h1>Welcome</h1>
+    <h6 id="needapi">get api data</h6>
+    <h5 id="demo">tests</h5>
+    <script>
+        var needapi = document.getElementById('needapi');
+        var demo = document.getElementById("demo");
+        needapi.addEventListener('click', function(event){
+            console.log('clicked');
+            getAPI();
+        });
+        function getAPI(){
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    demo.innerHTML = this.responseText;
+                    console.log(this.response);
+                }
+            };
+            xhttp.open("GET", "api", true);
+            xhttp.send();  
+        }
+
+    </script>
 </body>
+
 </html>

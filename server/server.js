@@ -10,9 +10,11 @@ var server = http.createServer(function(req,res) {
 		indexPage.pipe(res);	
 	}else if(req.url == '/api'){
 		res.writeHead(200,{"Content-Type":"application/json"});
+		let date_ob = new Date();
 		var jsonResponse = {
 			'a' : 1,
-			'b' : 'my world'
+			'b' : 'my world',
+			'time' : date_ob.getHours() + ":" + date_ob.getMinutes() + ":" + date_ob.getSeconds()
 		};
 		res.end(JSON.stringify(jsonResponse));
 	}else{
