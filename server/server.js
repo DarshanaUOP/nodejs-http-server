@@ -4,7 +4,8 @@ var fs = require("fs");
 var server = http.createServer(function(req,res) {
 	console.log("Request : "+req.url);
 	res.writeHead(200,{'Content-Type' : 'text/html'});
-	var indexPage = fs.createReadStream(__dirname + '/index.html',"utf-8");
+
+	var indexPage = fs.createReadStream('../index.html',"utf-8");
 	indexPage.pipe(res);
 });
 
