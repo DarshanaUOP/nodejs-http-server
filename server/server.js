@@ -6,7 +6,7 @@ var server = http.createServer(function(req,res) {
 
 	if(req.url == '/' || req.url == '/home'){
 		res.writeHead(200,{'Content-Type' : 'text/html'});
-		var indexPage = fs.createReadStream('../index.html',"utf-8");
+		var indexPage = fs.createReadStream('./index.html',"utf-8");
 		indexPage.pipe(res);	
 	}else if(req.url == '/api'){
 		res.writeHead(200,{"Content-Type":"application/json"});
@@ -19,7 +19,7 @@ var server = http.createServer(function(req,res) {
 		res.end(JSON.stringify(jsonResponse));
 	}else{
 		res.writeHead(200,{'Content-Type' : 'text/html'});
-		var indexPage = fs.createReadStream('../404.html',"utf-8");
+		var indexPage = fs.createReadStream('./404.html',"utf-8");
 		indexPage.pipe(res);
 	}
 });
